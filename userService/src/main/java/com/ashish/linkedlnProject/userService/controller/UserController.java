@@ -1,9 +1,11 @@
 package com.ashish.linkedlnProject.userService.controller;
 
+
 import com.ashish.linkedlnProject.userService.dto.LoginRequestDto;
 import com.ashish.linkedlnProject.userService.dto.SignupRequestDto;
 import com.ashish.linkedlnProject.userService.dto.UserDto;
 import com.ashish.linkedlnProject.userService.service.AuthService;
+import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,9 +22,9 @@ public class UserController {
     public UserController(AuthService authService) {
         this.authService = authService;
     }
-    
+
     @PostMapping("/signup")
-    public ResponseEntity<UserDto> signUp(@RequestBody SignupRequestDto signupRequestDto) {
+    public ResponseEntity<UserDto> signUp(@RequestBody SignupRequestDto signupRequestDto) throws BadRequestException {
         UserDto userDto = authService.signUp(signupRequestDto);
         return new ResponseEntity<>(userDto, HttpStatus.CREATED);
     }
