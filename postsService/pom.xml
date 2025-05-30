@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.0</version>
+		<version>3.3.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ashish.linkedlnProject</groupId>
 	<artifactId>postsService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>postsService</name>
-	<description>user service project for linkedln Project</description>
+	<description>user service project for linkedin Project</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -39,7 +39,7 @@
 		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
-			<version>3.2.2</version>
+			<version>3.2.0</version>
 		</dependency>
 
 		<dependency>

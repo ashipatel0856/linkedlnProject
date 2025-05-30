@@ -2,8 +2,11 @@ spring.application.name: api-gateway
 
 server.port: 8080
 eureka.client.service-url.defaultZone: http://localhost:8761/eureka
-spring.eureka.instance.prefer-ip-address: true
 
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    reactor.netty.http.client: TRACE
 
 
 spring:
