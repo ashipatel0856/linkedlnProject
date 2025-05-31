@@ -4,21 +4,21 @@ import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 
-@Node
-@Data
-public class Person {
-    @Id
-    @GeneratedValue
-    private Long id;
+import java.util.UUID;
 
+@Node
+public class Person {
+
+    @Id
+    private String id = UUID.randomUUID().toString();
     private Long userId;
     private String name;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

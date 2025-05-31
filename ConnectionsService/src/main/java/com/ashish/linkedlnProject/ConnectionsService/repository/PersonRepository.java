@@ -7,7 +7,7 @@ import org.springframework.data.neo4j.repository.query.Query;
 import java.util.List;
 import java.util.Optional;
 
-public interface PersonRepository extends Neo4jRepository<Person, Long> {
+public interface PersonRepository extends Neo4jRepository<Person, String> {
 
     Optional<Person> findByUserId(Long userId);
 

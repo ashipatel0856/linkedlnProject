@@ -1,6 +1,7 @@
 package com.ashish.linkedlnProject.userService.repository;
 
 import com.ashish.linkedlnProject.userService.entity.User;
+import org.springframework.boot.autoconfigure.data.neo4j.Neo4jDataAutoConfiguration;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
