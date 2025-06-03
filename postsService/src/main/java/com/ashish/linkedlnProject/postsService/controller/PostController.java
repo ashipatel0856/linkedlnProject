@@ -1,5 +1,6 @@
 package com.ashish.linkedlnProject.postsService.controller;
 
+import com.ashish.linkedlnProject.postsService.auth.AuthContextHolder;
 import com.ashish.linkedlnProject.postsService.dto.PostCreateRequestDto;
 import com.ashish.linkedlnProject.postsService.dto.PostDto;
 import com.ashish.linkedlnProject.postsService.service.PostService;
@@ -30,7 +31,8 @@ public class PostController {
     }
 
     @GetMapping("/{postId}")
-    public ResponseEntity<PostDto> getPost(@PathVariable Long postId, @RequestHeader("X-User-Id") Long userId) {
+    public ResponseEntity<PostDto> getPost(@PathVariable Long postId) {
+        Long userId = AuthContextHolder.getCurrentUserId();
         PostDto postDto = postService.getPostById(postId);
 //        return new ResponseEntity<>(postDto, HttpStatus.OK);
         return ResponseEntity.ok(postDto);

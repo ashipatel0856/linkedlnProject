@@ -1,5 +1,6 @@
 package com.ashish.linkedlnProject.postsService.service;
 
+import com.ashish.linkedlnProject.postsService.auth.AuthContextHolder;
 import com.ashish.linkedlnProject.postsService.dto.PostCreateRequestDto;
 import com.ashish.linkedlnProject.postsService.dto.PostDto;
 import com.ashish.linkedlnProject.postsService.entity.Post;
@@ -38,6 +39,7 @@ public class PostService {
 
     public PostDto getPostById(Long postId) {
         log.info("getting the post with id: {}", postId);
+        Long userId = AuthContextHolder.getCurrentUserId();
         Post post = postsRepository.findById(postId).orElseThrow(() -> new ResourceNotFoundException("Post with id " + postId + " not found"));
         return modelMapper.map(post, PostDto.class);
     }
