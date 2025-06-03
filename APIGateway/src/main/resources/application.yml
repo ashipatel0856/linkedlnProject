@@ -4,11 +4,12 @@ server.port: 8080
 eureka.client.service-url.defaultZone: http://localhost:8761/eureka
 jwt.secretKey: aljfoewjfopl**/--@3klafhkkglajfjoelj#$%dslhgbsl(0^hsh
 
-
+#
 #logging:
 #  level:
 #    org.springframework.cloud.gateway: TRACE
 #    reactor.netty.http.client: TRACE
+
 
 
 

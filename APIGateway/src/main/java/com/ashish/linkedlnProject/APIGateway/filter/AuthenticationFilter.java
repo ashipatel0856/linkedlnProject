@@ -1,14 +1,16 @@
 package com.ashish.linkedlnProject.APIGateway.filter;
-import com.ashish.linkedlnProject.userService.service.JwtService;
+
+import com.ashish.linkedlnProject.APIGateway.JwtService;
 import io.jsonwebtoken.JwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
-
+@Component
 public class AuthenticationFilter extends AbstractGatewayFilterFactory<AuthenticationFilter.Config> {
 
     private static final Logger log=LoggerFactory.getLogger(AuthenticationFilter.class);
@@ -16,7 +18,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
 
     public AuthenticationFilter(JwtService jwtService) {
         super(Config.class);
-        this.jwtService=jwtService;
+        this.jwtService = jwtService;
     }
 
     @Override
