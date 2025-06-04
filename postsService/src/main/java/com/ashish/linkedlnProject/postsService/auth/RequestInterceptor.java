@@ -1,10 +1,13 @@
 package com.ashish.linkedlnProject.postsService.auth;
 
+import feign.RequestTemplate;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-public class RequestInterceptor implements HandlerInterceptor {
+@Component
+public abstract class RequestInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -20,4 +23,5 @@ public class RequestInterceptor implements HandlerInterceptor {
     }
 
 
+    public abstract void apply(RequestTemplate requestTemplate);
 }
