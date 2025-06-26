@@ -28,7 +28,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
             log.info("Authenticating request :{}",exchange.getRequest().getURI());
             final String tokenHeader = exchange.getRequest().getHeaders().getFirst("Authorization");
 
-            if (tokenHeader != null && tokenHeader.startsWith("Bearer ")) {
+            if (tokenHeader == null || tokenHeader.startsWith("Bearer ")) {
                 exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
                 return exchange.getResponse().setComplete();
             }

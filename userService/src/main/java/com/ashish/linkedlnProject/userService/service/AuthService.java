@@ -5,7 +5,6 @@ import com.ashish.linkedlnProject.userService.dto.SignupRequestDto;
 import com.ashish.linkedlnProject.userService.dto.UserDto;
 import com.ashish.linkedlnProject.userService.entity.User;
 import com.ashish.linkedlnProject.userService.exception.BadRequestException;
-import com.ashish.linkedlnProject.userService.exception.ResourceNotFoundException;
 import com.ashish.linkedlnProject.userService.repository.UserRepository;
 import com.ashish.linkedlnProject.userService.utils.BCrypt;
 
@@ -36,7 +35,7 @@ public class AuthService {
         log.info("Signing up a user with email: {}", signupRequestDto.getEmail());
 
         if (userRepository.existsByEmail(signupRequestDto.getEmail())) {
-            throw new BadRequestException("Email already exists");
+            throw new BadRequestException("Email has already exists");
         }
 
         User user = modelMapper.map(signupRequestDto, User.class);
@@ -47,7 +46,6 @@ public class AuthService {
     }
 
     public String login(LoginRequestDto loginRequestDto) {
-
 
         log.info("Login a user with email: {}", loginRequestDto.getEmail());
         User user = userRepository.findByEmail(loginRequestDto.getEmail())
