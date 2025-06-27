@@ -1,10 +1,8 @@
 package com.ashish.linkedlnProject.userService.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
-
 @Table(name = "users")
 public class User {
     @Id

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 @Component
-public abstract class RequestInterceptor implements HandlerInterceptor {
+public  class RequestInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -24,5 +24,4 @@ public abstract class RequestInterceptor implements HandlerInterceptor {
     }
 
 
-    public abstract void apply(RequestTemplate requestTemplate);
 }

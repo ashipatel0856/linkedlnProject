@@ -49,7 +49,7 @@ public class AuthService {
 
         log.info("Login a user with email: {}", loginRequestDto.getEmail());
         User user = userRepository.findByEmail(loginRequestDto.getEmail())
-                .orElseThrow(() -> new BadRequestException("Incorrect email or password"));
+                .orElseThrow(() -> new BadRequestException("Incorrect email or password, please try again"));
 
         boolean isPasswordMatch = BCrypt.hash(loginRequestDto.getPassword()).equals(user.getPassword());
 
