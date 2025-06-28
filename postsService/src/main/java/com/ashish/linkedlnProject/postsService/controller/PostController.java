@@ -13,7 +13,7 @@ import org.w3c.dom.html.HTMLTableCaptionElement;
 import java.util.List;
 
 @RestController
-@RequestMapping("/core")
+@RequestMapping("/posts/core")
 public class PostController {
 
     private final PostService postService;
