@@ -4,3 +4,10 @@ spring:
     consumer:
       key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    listener:
+      missing-topics-fatal: false
+    properties:
+      spring:
+        json:
+          trusted:
+            packages: "*"
