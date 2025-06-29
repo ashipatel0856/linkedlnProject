@@ -9,12 +9,12 @@ import com.ashish.linkedlnProject.postsService.entity.Post;
 import com.ashish.linkedlnProject.postsService.event.PostCreated;
 import com.ashish.linkedlnProject.postsService.exception.ResourceNotFoundException;
 import com.ashish.linkedlnProject.postsService.repository.PostsRepository;
-import jakarta.persistence.Persistence;
-import jakarta.ws.rs.POST;
-import lombok.extern.slf4j.Slf4j;
+
+
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,10 +30,11 @@ public class PostService {
     private final ConnectionsServiceClient connectionsServiceClient;
     private final KafkaTemplate<Long, PostCreated> postCreatedKafkaTemplate;
 
-    public PostService(PostsRepository postsRepository, ModelMapper modelMapper, ConnectionsServiceClient connectionsServiceClient) {
+    public PostService(PostsRepository postsRepository, ModelMapper modelMapper, ConnectionsServiceClient connectionsServiceClient, KafkaTemplate<Long, PostCreated> postCreatedKafkaTemplate) {
         this.postsRepository = postsRepository;
         this.modelMapper = modelMapper;
         this.connectionsServiceClient = connectionsServiceClient;
+        this.postCreatedKafkaTemplate = postCreatedKafkaTemplate;
     }
 
     public PostDto createPost(PostCreateRequestDto postCreateRequestDto, Long userId) {
@@ -43,11 +44,12 @@ public class PostService {
         post = postsRepository.save(post);
 
         List<PersonDto> personDtoList = connectionsServiceClient.getFirstDegreeConnections(userId);
-        for(PersonDto person : personDtoList) {
+        for(PersonDto person : personDtoList) {  // send notifications to each connections
             PostCreated postCreated = PostCreated.builder()
                     .postId(post.getId())
                     .content(post.getContent())
-                    .userId(userId)
+                    .userId(person.getUserId())
+                    .ownerUserId(userId)
                     .build();
             postCreatedKafkaTemplate.send("post_created_topics",postCreated);
         }

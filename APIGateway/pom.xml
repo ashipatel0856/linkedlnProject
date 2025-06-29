@@ -68,6 +68,7 @@
 			<version>0.12.6</version>
 			<scope>runtime</scope>
 		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>
