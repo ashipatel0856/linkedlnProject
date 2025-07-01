@@ -1,5 +1,6 @@
 package com.ashish.linkedlnProject.ConnectionsService.service;
 
+import com.ashish.linkedlnProject.ConnectionsService.auth.AuthContextHolder;
 import com.ashish.linkedlnProject.ConnectionsService.entity.Person;
 import com.ashish.linkedlnProject.ConnectionsService.repository.PersonRepository;
 import org.slf4j.Logger;
@@ -47,7 +48,7 @@ public class ConnectionsService {
 
 
     public void acceptConnectionRequest(Long senderId){
-        Long receiverId = AuthContextHolder.getCurrentUserId();
+        Long receiverId = AuthContextHolder.getCurrentUser();
         log.info("accepting connection request to sender  with id:{}",senderId,receiverId);
 
 
@@ -69,7 +70,7 @@ public class ConnectionsService {
 
 
     public void rejectConnectionRequest(Long senderId) {
-        Long receiverId = AuthContextHolder.getCurrentUserId();
+        Long receiverId = AuthContextHolder.getCurrentUser();
         log.info("rejecting a connection request to sender  with id:{}", senderId, receiverId);
 
 

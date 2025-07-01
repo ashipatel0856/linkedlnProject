@@ -1,10 +1,10 @@
-package com.codingshuttle.linkedInProject.ConnectionsService.auth;
+package com.ashish.linkedlnProject.ConnectionsService.auth;
 
 public class AuthContextHolder {
 
     private static final ThreadLocal<Long> currentUserId = new ThreadLocal<>();
 
-    public static Long getCurrentUserId() {
+    public static Long getCurrentUser() {
         return currentUserId.get();
     }
 
@@ -15,5 +15,6 @@ public class AuthContextHolder {
     static void clear() {
         currentUserId.remove();
     }
+
 
 }

@@ -1,4 +1,4 @@
-package com.codingshuttle.linkedInProject.ConnectionsService.auth;
+package com.ashish.linkedlnProject.ConnectionsService.auth;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
